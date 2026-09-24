@@ -38,7 +38,7 @@ function SellerAddProduct() {
     });
 
     try {
-      await axios.post("http://localhost:5000/api/products", formData, {
+      await axios.post("/api/products", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: token,

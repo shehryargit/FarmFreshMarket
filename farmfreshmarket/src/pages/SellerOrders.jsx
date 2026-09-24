@@ -9,7 +9,7 @@ function SellerOrders() {
     if (!token) return;
 
     axios
-      .get("http://localhost:5000/api/orders/seller-orders", {
+      .get("/api/orders/seller-orders", {
         headers: { Authorization: token },
       })
       .then((res) => setOrders(res.data))
@@ -21,7 +21,7 @@ function SellerOrders() {
     if (!confirm) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/orders/${orderId}`);
+      await axios.delete(`/api/orders/${orderId}`);
       setOrders(orders.filter((o) => o._id !== orderId));
     } catch (err) {
       console.error("❌ Failed to cancel order:", err);

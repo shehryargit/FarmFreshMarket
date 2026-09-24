@@ -6,7 +6,7 @@ function AllProducts({ addToCart }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/products/all")
+      .get("/api/products/all")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Failed to fetch", err));
   }, []);

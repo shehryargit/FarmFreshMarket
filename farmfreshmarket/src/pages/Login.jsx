@@ -16,7 +16,7 @@ function Login() {
     setError("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", form);
+      const res = await axios.post("/api/auth/login", form);
       localStorage.setItem("sellerToken", res.data.token); // 🔐 Save JWT token
       alert("Login successful!");
       navigate("/seller-dashboard"); // Will create next

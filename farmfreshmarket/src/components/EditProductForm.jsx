@@ -19,7 +19,7 @@ function EditProductForm({ product, onClose, onUpdate }) {
 
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/products/${product._id}`,
+        `/api/products/${product._id}`,
         form,
         {
           headers: { Authorization: token },

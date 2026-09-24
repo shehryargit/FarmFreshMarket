@@ -10,7 +10,7 @@ function FarmGallery() {
   const fetchGallery = () => {
     const token = localStorage.getItem("sellerToken");
     axios
-      .get("http://localhost:5000/api/farm/my-gallery", {
+      .get("/api/farm/my-gallery", {
         headers: { Authorization: token },
       })
       .then((res) => setGallery(res.data))
@@ -35,7 +35,7 @@ function FarmGallery() {
     setUploading(true);
 
     try {
-      await axios.post("http://localhost:5000/api/farm/upload", formData, {
+      await axios.post("/api/farm/upload", formData, {
         headers: {
           Authorization: token,
           "Content-Type": "multipart/form-data",
@@ -56,7 +56,7 @@ function FarmGallery() {
 
     try {
       const token = localStorage.getItem("sellerToken");
-      await axios.delete(`http://localhost:5000/api/farm/delete/${id}`, {
+      await axios.delete(`/api/farm/delete/${id}`, {
         headers: { Authorization: token },
       });
       fetchGallery(); // Refresh

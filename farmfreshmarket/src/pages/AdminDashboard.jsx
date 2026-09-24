@@ -9,7 +9,7 @@ function AdminDashboard() {
     const token = localStorage.getItem("adminToken");
 
     axios
-      .get("http://localhost:5000/api/admin/stats", {
+      .get("/api/admin/stats", {
         headers: { Authorization: token },
       })
       .then((res) => setStats(res.data))

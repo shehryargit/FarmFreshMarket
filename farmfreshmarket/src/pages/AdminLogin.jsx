@@ -15,7 +15,7 @@ function AdminLogin() {
     e.preventDefault();
     setError("");
     try {
-      const res = await axios.post("http://localhost:5000/api/admin/login", form);
+      const res = await axios.post("/api/admin/login", form);
       localStorage.setItem("adminToken", res.data.token);
       navigate("/admin/dashboard");
     } catch (err) {

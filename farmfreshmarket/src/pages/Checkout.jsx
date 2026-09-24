@@ -11,7 +11,7 @@ function Checkout({ cart, clearCart }) {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/orders/place", {
+      const res = await axios.post("/api/orders/place", {
         buyerName,
         buyerEmail,
         buyerPhone,

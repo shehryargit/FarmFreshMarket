@@ -11,7 +11,7 @@ function MyProducts() {
     if (!token) return;
 
     axios
-      .get("http://localhost:5000/api/products/mine", {
+      .get("/api/products/mine", {
         headers: { Authorization: token },
       })
       .then((res) => setProducts(res.data))
@@ -25,7 +25,7 @@ function MyProducts() {
     const token = localStorage.getItem("sellerToken");
 
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`, {
+      await axios.delete(`/api/products/${id}`, {
         headers: { Authorization: token },
       });
 

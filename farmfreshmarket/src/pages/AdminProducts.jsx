@@ -6,7 +6,7 @@ function AdminProducts() {
 
   const fetchProducts = () => {
     const token = localStorage.getItem("adminToken");
-    axios.get("http://localhost:5000/api/admin/products", {
+    axios.get("/api/admin/products", {
       headers: { Authorization: token }
     })
     .then(res => setProducts(res.data))
@@ -16,7 +16,7 @@ function AdminProducts() {
   const handleDelete = (id) => {
     if (!window.confirm("Delete this product?")) return;
     const token = localStorage.getItem("adminToken");
-    axios.delete(`http://localhost:5000/api/admin/products/${id}`, {
+    axios.delete(`/api/admin/products/${id}`, {
       headers: { Authorization: token }
     }).then(() => fetchProducts());
   };

@@ -14,7 +14,7 @@ function AdminManage() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/manage", {
+      const res = await axios.get("/api/admin/manage", {
         headers: { Authorization: token },
       });
       setSellers(res.data.sellers);
@@ -26,21 +26,21 @@ function AdminManage() {
   };
 
   const deleteSeller = async (id) => {
-    await axios.delete(`http://localhost:5000/api/admin/seller/${id}`, {
+    await axios.delete(`/api/admin/seller/${id}`, {
       headers: { Authorization: token },
     });
     fetchData();
   };
 
   const deleteProduct = async (id) => {
-    await axios.delete(`http://localhost:5000/api/admin/product/${id}`, {
+    await axios.delete(`/api/admin/product/${id}`, {
       headers: { Authorization: token },
     });
     fetchData();
   };
 
   const deleteOrder = async (id) => {
-    await axios.delete(`http://localhost:5000/api/admin/order/${id}`, {
+    await axios.delete(`/api/admin/order/${id}`, {
       headers: { Authorization: token },
     });
     fetchData();
