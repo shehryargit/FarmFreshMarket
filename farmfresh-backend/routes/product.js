@@ -19,11 +19,15 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-// 🧾 Add new product (with image)
-router.post("/", verifyToken, upload.single("image"), async (req, res) => {
+// 🧾 Add new product with up to eight images
+router.post("/", verifyToken, upload.array("images", 8), async (req, res) => {
   try {
     const { name, price, category, description } = req.body;
-    const imageUrl = req.file.path;
+    const imageUrls = (req.files || []).map((file) => file.path);
+
+    if (imageUrls.length === 0) {
+      return res.status(400).json({ msg: "At least one image is required" });
+    }
 
     const product = new Product({
       sellerId: req.sellerId,
@@ -31,7 +35,8 @@ router.post("/", verifyToken, upload.single("image"), async (req, res) => {
       price,
       category,
       description,
-      imageUrl,
+      imageUrl: imageUrls[0],
+      imageUrls,
     });
 
     await product.save();

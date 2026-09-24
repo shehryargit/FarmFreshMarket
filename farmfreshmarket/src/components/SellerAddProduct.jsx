@@ -7,14 +7,14 @@ function SellerAddProduct() {
     price: "",
     category: "",
     stock: "",
-    image: null,
+    images: [],
   });
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    if (e.target.name === "image") {
-      setForm({ ...form, image: e.target.files[0] });
+    if (e.target.name === "images") {
+      setForm({ ...form, images: Array.from(e.target.files) });
     } else {
       setForm({ ...form, [e.target.name]: e.target.value });
     }
@@ -29,8 +29,12 @@ function SellerAddProduct() {
     if (!token) return setError("Not authorized.");
 
     const formData = new FormData();
-    Object.keys(form).forEach((key) => {
-      formData.append(key, form[key]);
+    Object.entries(form).forEach(([key, value]) => {
+      if (key === "images") {
+        value.forEach((file) => formData.append("images", file));
+      } else {
+        formData.append(key, value);
+      }
     });
 
     try {
@@ -47,7 +51,7 @@ function SellerAddProduct() {
         price: "",
         category: "",
         stock: "",
-        image: null,
+        images: [],
       });
     } catch (err) {
       setError(err.response?.data?.msg || "Upload failed");
@@ -94,13 +98,19 @@ function SellerAddProduct() {
           required
         />
         <input
-          name="image"
+          name="images"
           onChange={handleChange}
           type="file"
+          multiple
           accept="image/*"
           className="w-full"
           required
         />
+        {form.images.length > 0 && (
+          <p className="text-sm text-gray-600">
+            {form.images.length} image{form.images.length === 1 ? "" : "s"} selected
+          </p>
+        )}
         <button
           type="submit"
           className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700"

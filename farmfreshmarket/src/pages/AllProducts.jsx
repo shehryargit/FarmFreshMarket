@@ -17,11 +17,18 @@ function AllProducts({ addToCart }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {products.map((p) => (
           <div key={p._id} className="border p-4 rounded shadow">
-            <img
-              src={p.imageUrl}
-              alt={p.name}
-              className="w-full h-40 object-cover mb-3 rounded"
-            />
+            <div className="grid grid-cols-3 gap-2 mb-3">
+              {(p.imageUrls?.length ? p.imageUrls : [p.imageUrl]).map(
+                (imageUrl, index) => (
+                  <img
+                    key={`${p._id}-${imageUrl}`}
+                    src={imageUrl}
+                    alt={`${p.name} ${index + 1}`}
+                    className="w-full h-32 object-cover rounded"
+                  />
+                )
+              )}
+            </div>
             <h3 className="text-xl font-bold">{p.name}</h3>
             <p className="text-green-700 font-semibold">Rs. {p.price}/kg</p>
             <p className="text-sm text-gray-600">{p.category}</p>

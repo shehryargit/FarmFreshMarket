@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/shehryargit/My-react-app/static/css/main.1ee9bfd4.css",
-    "main.js": "/shehryargit/My-react-app/static/js/main.931018d8.js",
+    "main.css": "/shehryargit/My-react-app/static/css/main.b3a68392.css",
+    "main.js": "/shehryargit/My-react-app/static/js/main.bf094d75.js",
     "static/media/pic.png": "/shehryargit/My-react-app/static/media/pic.dae71c21b22b34844c1f.png",
     "index.html": "/shehryargit/My-react-app/index.html",
-    "main.1ee9bfd4.css.map": "/shehryargit/My-react-app/static/css/main.1ee9bfd4.css.map",
-    "main.931018d8.js.map": "/shehryargit/My-react-app/static/js/main.931018d8.js.map"
+    "main.b3a68392.css.map": "/shehryargit/My-react-app/static/css/main.b3a68392.css.map",
+    "main.bf094d75.js.map": "/shehryargit/My-react-app/static/js/main.bf094d75.js.map"
   },
   "entrypoints": [
-    "static/css/main.1ee9bfd4.css",
-    "static/js/main.931018d8.js"
+    "static/css/main.b3a68392.css",
+    "static/js/main.bf094d75.js"
   ]
 }

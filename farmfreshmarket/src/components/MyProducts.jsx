@@ -60,11 +60,18 @@ function MyProducts() {
               key={p._id}
               className="border p-4 rounded shadow flex flex-col justify-between"
             >
-              <img
-                src={p.imageUrl}
-                alt={p.name}
-                className="h-40 w-full object-cover rounded mb-3"
-              />
+              <div className="grid grid-cols-3 gap-2 mb-3">
+                {(p.imageUrls?.length ? p.imageUrls : [p.imageUrl]).map(
+                  (imageUrl, index) => (
+                    <img
+                      key={`${p._id}-${imageUrl}`}
+                      src={imageUrl}
+                      alt={`${p.name} ${index + 1}`}
+                      className="h-28 w-full object-cover rounded"
+                    />
+                  )
+                )}
+              </div>
               <h3 className="text-xl font-semibold">{p.name}</h3>
               <p className="text-green-700 font-bold">Rs. {p.price}</p>
               <p className="text-sm text-gray-500">{p.category}</p>
